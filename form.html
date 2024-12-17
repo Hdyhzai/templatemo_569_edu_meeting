@@ -544,10 +544,10 @@
 
         const content = `
       <div class="popup-content">
-        <h3>Heart Disease Prediction Result</h3>
-        <p>${result
+        <h3 style="font-weight: 400;">Your result is </h3>
+        <h3 style="font-weight: 600; font-size: 1.3rem; padding-top: 7px; padding-bottom: 7px;">${result
             ? 'Higher risk of heart disease detected.'
-            : 'Low risk of heart disease.'}</p>
+            : 'Low risk of heart disease.'}</h3>
         <button class="confirm-btn" onclick="this.closest('.popup-modal').remove()">Close</button>
       </div>
     `;
