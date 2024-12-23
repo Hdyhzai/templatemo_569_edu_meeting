@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up Page</title>
+  <!-- MDBootstrap CSS -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- Section: Design Block -->
+  <section class="text-center text-lg-start">
+    <style>
+      .rounded-t-5 {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+
+      @media (min-width: 992px) {
+        .rounded-tr-lg-0 {
+          border-top-right-radius: 0;
+        }
+
+        .rounded-bl-lg-5 {
+          border-bottom-left-radius: 0.5rem;
+        }
+      }
+    </style>
+    <div class="card mb-3" style="height: 100vh; align-items: center; justify-content: center;">
+      <div class="row g-0 d-flex align-items-center">
+        <div class="col-lg-4 d-none d-lg-flex">
+          <img src="https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/28488/happy-heart-cartoon-2.jpg" alt="heart"
+            class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+        </div>
+        <div class="col-lg-8">
+          <div class="card-body py-5 px-md-5">
+            <form>
+              <!-- Name input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text" id="form3Example1" class="form-control" />
+                <label class="form-label" for="form3Example1">Full Name</label>
+              </div>
+
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="email" id="form3Example2" class="form-control" />
+                <label class="form-label" for="form3Example2">Email address</label>
+              </div>
+
+              <!-- Password input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="password" id="form3Example3" class="form-control" />
+                <label class="form-label" for="form3Example3">Password</label>
+              </div>
+
+              <!-- Terms and Conditions checkbox -->
+              <div class="form-check d-flex mb-4" style="align-items: start;">
+                <input
+                  class="form-check-input me-2"
+                  type="checkbox"
+                  id="termsCheckbox"
+                  onchange="toggleSignUpButton()"
+                />
+                <label class="form-check-label" for="termsCheckbox">
+                  I agree to the <a href="#!" class="text-primary">Terms and Conditions</a>
+                </label>
+              </div>
+
+              <!-- Submit button -->
+              <button
+                type="button"
+                id="signUpButton"
+                class="btn btn-primary btn-block mb-4"
+                disabled
+              >
+                Sign Up
+              </button>
+            </form>
+            <div>
+                Already have an account? <a href="/templatemo_569_edu_meeting/login.html">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
+
+  <!-- MDBootstrap JavaScript -->
+  <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"
+  ></script>
+
+  <script>
+    function toggleSignUpButton() {
+      const termsCheckbox = document.getElementById('termsCheckbox');
+      const signUpButton = document.getElementById('signUpButton');
+      signUpButton.disabled = !termsCheckbox.checked;
+    }
+  </script>
+</body>
+</html>

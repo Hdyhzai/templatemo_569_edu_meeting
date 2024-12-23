@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- MDBootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Section: Design Block -->
+    <section class="text-center text-lg-start">
+        <style>
+            .rounded-t-5 {
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0.5rem;
+            }
+
+            @media (min-width: 992px) {
+                .rounded-tr-lg-0 {
+                    border-top-right-radius: 0;
+                }
+
+                .rounded-bl-lg-5 {
+                    border-bottom-left-radius: 0.5rem;
+                }
+            }
+        </style>
+        <div class="card mb-3">
+            <div class="row g-0 d-flex align-items-center p-4" style="height: 100vh;">
+                <div class="col-lg-4 d-none d-lg-flex">
+                    <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
+                        class="w-100 rounded" />
+                </div>
+                <div class="col-lg-8">
+                    <div class="card-body py-5 px-md-5">
+                        <form onsubmit="return login(event)">
+                            <!-- Email input -->
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="email" id="email" class="form-control" />
+                                <label class="form-label" for="email">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="password" id="password" class="form-control" />
+                                <label class="form-label" for="password">Password</label>
+                            </div>
+
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="mb-4"
+                                style="width: auto; display: flex; flex-direction: row; justify-content: space-between;">
+                                <div class="col d-flex">
+                                    <!-- Checkbox -->
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="form2Example31"
+                                            checked />
+                                        <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <!-- Simple link -->
+                                    <a href="#!">Forgot password?</a>
+                                </div>
+                            </div>
+
+                            <!-- Submit button -->
+                            <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                class="btn btn-primary btn-block mb-4">Sign in</button>
+                            <div>
+                                Don&apos;t have an account? <a href="/templatemo_569_edu_meeting/signup.html">Sign
+                                    up</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Section: Design Block -->
+    <script>
+        async function login(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return false;
+            }
+
+
+
+            // TODO: send the email and password to the server
+
+            window.location.href = '/index.html';
+            return false;
+        }
+    </script>
+
+    <!-- MDBootstrap JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+</body>
+
+</html>
