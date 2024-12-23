@@ -1,130 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .login-container {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
-        .login-container h1 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #555;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 0.875rem;
-        }
-        .form-group input:focus {
-            outline: none;
-            border-color: #007bff;
-            box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background-color: #0056b3;
-        }
-        .forgot-password {
-            text-align: center;
-            margin-top: 1rem;
-        }
-        .forgot-password a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-        .terms {
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.875rem;
-        }
-        .terms a {
-            color: #007bff;
-            text-decoration: none;
-        }
-        .terms a:hover {
-            text-decoration: underline;
-        }
-        .signup {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 1rem;
-        }
-        .signup a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .signup a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <!-- MDBootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
 </head>
+
 <body>
-    
-    <div class="login-container">
-        <h1>Login</h1>
-        <form action="/login" method="POST">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+    <!-- Section: Design Block -->
+    <section class="text-center text-lg-start">
+        <style>
+            .rounded-t-5 {
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0.5rem;
+            }
+
+            @media (min-width: 992px) {
+                .rounded-tr-lg-0 {
+                    border-top-right-radius: 0;
+                }
+
+                .rounded-bl-lg-5 {
+                    border-bottom-left-radius: 0.5rem;
+                }
+            }
+        </style>
+        <div class="card mb-3">
+            <div class="row g-0 d-flex align-items-center p-4" style="height: 100vh;">
+                <div class="col-lg-4 d-none d-lg-flex">
+                    <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
+                        class="w-100 rounded" />
+                </div>
+                <div class="col-lg-8">
+                    <div class="card-body py-5 px-md-5">
+                        <form>
+                            <!-- Email input -->
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="email" id="form2Example1" class="form-control" />
+                                <label class="form-label" for="form2Example1">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="password" id="form2Example2" class="form-control" />
+                                <label class="form-label" for="form2Example2">Password</label>
+                            </div>
+
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="mb-4"
+                                style="width: auto; display: flex; flex-direction: row; justify-content: space-between;">
+                                <div class="col d-flex">
+                                    <!-- Checkbox -->
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="form2Example31"
+                                            checked />
+                                        <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                    </div>
+                                </div>
+
+                                <div class="">
+                                    <!-- Simple link -->
+                                    <a href="#!">Forgot password?</a>
+                                </div>
+                            </div>
+
+                            <!-- Submit button -->
+                            <!-- <button type="button" onclick="login()" data-mdb-button-init data-mdb-ripple-init
+                                class="btn btn-primary btn-block mb-4">Sign in</button> -->
+
+                            <input type="button" onclick="login"
+                            class="btn btn-primary btn-block mb-4" value="Login">
+                            <div>
+                                Don&apos;t have an account? <a href="/templatemo_569_edu_meeting/signup.html">Sign
+                                    up</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" placeholder="Enter your password" required>
-            </div>
-            <div class="terms">
-                <input type="checkbox" id="terms" name="terms" required>
-                <label for="terms">I agree to the <a href="#">Terms and Conditions</a></label> <br>
-            </div>
-            <button type="submit" class="btn">Log In</button>
-        </form>
-        <div class="forgot-password">
-            <a href="#">Forgot your password?</a>
         </div>
-        <div class="signup">
-            <p>Don't have an account? <a href="#">Sign Up</a></p>
-        </div>
-    </div>
+    </section>
+    <!-- Section: Design Block -->
+    <script>
+        function login() {
+
+            window.location.href = 'index.html';
+            // return false;
+
+        }
+    </script>
+
+    <!-- MDBootstrap JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
 </body>
+
 </html>
