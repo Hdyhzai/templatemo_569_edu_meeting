@@ -36,17 +36,17 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="card-body py-5 px-md-5">
-                        <form>
+                        <form onsubmit="return login(event)">
                             <!-- Email input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="email" id="form2Example1" class="form-control" />
-                                <label class="form-label" for="form2Example1">Email address</label>
+                                <input type="email" id="email" class="form-control" />
+                                <label class="form-label" for="email">Email address</label>
                             </div>
 
                             <!-- Password input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="password" id="form2Example2" class="form-control" />
-                                <label class="form-label" for="form2Example2">Password</label>
+                                <input type="password" id="password" class="form-control" />
+                                <label class="form-label" for="password">Password</label>
                             </div>
 
                             <!-- 2 column grid layout for inline styling -->
@@ -68,11 +68,8 @@
                             </div>
 
                             <!-- Submit button -->
-                            <!-- <button type="button" onclick="login()" data-mdb-button-init data-mdb-ripple-init
-                                class="btn btn-primary btn-block mb-4">Sign in</button> -->
-
-                            <input type="button" onclick="login"
-                            class="btn btn-primary btn-block mb-4" value="Login">
+                            <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                class="btn btn-primary btn-block mb-4">Sign in</button>
                             <div>
                                 Don&apos;t have an account? <a href="/templatemo_569_edu_meeting/signup.html">Sign
                                     up</a>
@@ -85,11 +82,23 @@
     </section>
     <!-- Section: Design Block -->
     <script>
-        function login() {
+        async function login(event) {
+            event.preventDefault();
 
-            window.location.href = 'index.html';
-            // return false;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
+            if (!email || !password) {
+                alert('Please fill in all fields');
+                return false;
+            }
+
+
+
+            // TODO: send the email and password to the server
+
+            window.location.href = '/index.html';
+            return false;
         }
     </script>
 
