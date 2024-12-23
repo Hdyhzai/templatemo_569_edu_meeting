@@ -2,113 +2,138 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up Page</title>
-  <!-- MDBootstrap CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <!-- MDBootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+
+    <script type="module" src="checkauth.js"></script>
 </head>
 
 <body>
-  <!-- Section: Design Block -->
-  <section class="text-center text-lg-start">
-    <style>
-      .rounded-t-5 {
-        border-top-left-radius: 0.5rem;
-        border-top-right-radius: 0.5rem;
-      }
+    <!-- Section: Design Block -->
+    <section class="text-center text-lg-start">
+        <style>
+            .rounded-t-5 {
+                border-top-left-radius: 0.5rem;
+                border-top-right-radius: 0.5rem;
+            }
 
-      @media (min-width: 992px) {
-        .rounded-tr-lg-0 {
-          border-top-right-radius: 0;
-        }
+            @media (min-width: 992px) {
+                .rounded-tr-lg-0 {
+                    border-top-right-radius: 0;
+                }
 
-        .rounded-bl-lg-5 {
-          border-bottom-left-radius: 0.5rem;
-        }
-      }
-    </style>
-    <div class="card mb-3" style="height: 100vh; align-items: center; justify-content: center;">
-      <div class="row g-0 d-flex align-items-center">
-        <div class="col-lg-4 d-none d-lg-flex">
-          <img src="https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/28488/happy-heart-cartoon-2.jpg"
-            alt="heart" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-        </div>
-        <div class="col-lg-8">
-          <div class="card-body py-5 px-md-5">
-            <form onsubmit="return submitSignUp(event)">
-              <!-- Name input -->
-              <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text" id="form3Example1" class="form-control" />
-                <label class="form-label" for="form3Example1">Full Name</label>
-              </div>
+                .rounded-bl-lg-5 {
+                    border-bottom-left-radius: 0.5rem;
+                }
+            }
+        </style>
+        <div class="card mb-3">
+            <div class="row g-0 d-flex align-items-center p-4" style="height: 100vh;">
+                <div class="col-lg-4 d-none d-lg-flex">
+                    <img src="https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/28488/happy-heart-cartoon-2.jpg"
+                        alt="heart" class="w-100 rounded" />
+                </div>
+                <div class="col-lg-8">
+                    <div class="card-body py-5 px-md-5">
+                        <form onsubmit="return submitSignUp(event)">
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="text" id="form3Example1" class="form-control" />
+                                <label class="form-label" for="form3Example1">Full Name</label>
+                            </div>
 
-              <!-- Email input -->
-              <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="form3Example2" class="form-control" />
-                <label class="form-label" for="form3Example2">Email address</label>
-              </div>
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="email" id="form3Example2" class="form-control" />
+                                <label class="form-label" for="form3Example2">Email address</label>
+                            </div>
 
-              <!-- Password input -->
-              <div data-mdb-input-init class="form-outline mb-4">
-                <input type="password" id="form3Example3" class="form-control" />
-                <label class="form-label" for="form3Example3">Password</label>
-              </div>
+                            <div data-mdb-input-init class="form-outline mb-4">
+                                <input type="password" id="form3Example3" class="form-control" />
+                                <label class="form-label" for="form3Example3">Password</label>
+                            </div>
 
-              <!-- Terms and Conditions checkbox -->
-              <div class="form-check d-flex mb-4" style="align-items: start;">
-                <input class="form-check-input me-2" type="checkbox" id="termsCheckbox"
-                  onchange="toggleSignUpButton()" />
-                <label class="form-check-label" for="termsCheckbox">
-                  I agree to the <a href="/terms.html" class="text-primary">Terms and Conditions</a>
-                </label>
-              </div>
+                            <div class="form-check d-flex mb-4" style="align-items: start;">
+                                <input class="form-check-input me-2" type="checkbox" id="termsCheckbox"
+                                    onchange="toggleSignUpButton()" />
+                                <label class="form-check-label" for="termsCheckbox">
+                                    I agree to the <a href="/terms.html" class="text-primary">Terms and Conditions</a>
+                                </label>
+                            </div>
 
-              <!-- Submit button -->
-              <button type="submit" data-mdb-button-init
-              class="btn btn-primary btn-block mb-4"><a href="login.html"></a>Sign up</button>
-              <div>
-            </form>
-            <div style="margin-top: 10px;">
-              Already have an account? <a href="/login.html">Login</a>
+                            <button type="submit" data-mdb-button-init class="btn btn-primary btn-block mb-4"
+                                id="signUpButton" disabled><a href="login.html"></a>Sign up</button>
+                            <div>
+                        </form>
+                        <div>
+                            Already have an account? <a href="/login.html">Login</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-  <!-- Section: Design Block -->
+    </section>
+    <!-- Section: Design Block -->
 
-  <!-- MDBootstrap JavaScript -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+    <!-- MDBootstrap JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
 
-  <script>
+    <script>
 
-    async function submitSignUp() {
-      event.preventDefault()
+        async function submitSignUp() {
+            event.preventDefault()
 
-      const fullName = document.getElementById('form3Example1').value;
-      const email = document.getElementById('form3Example2').value;
-      const password = document.getElementById('form3Example3').value;
+            const fullname = document.getElementById('form3Example1').value;
+            const email = document.getElementById('form3Example2').value;
+            const password = document.getElementById('form3Example3').value;
 
 
-      const unfilled = !fullName || !email || !password
+            const unfilled = !fullname || !email || !password
 
-      if (unfilled) {
-        alert('Please fill in all fields');
-        return false;
-      }
+            if (unfilled) {
+                alert('Please fill in all fields');
+                return false;
+            }
 
-      window.location.href = '/login.html';
-      return false;
-    }
 
-    function toggleSignUpButton(event) {
-      const termsCheckbox = document.getElementById('termsCheckbox');
-      const signUpButton = document.getElementById('signUpButton');
-      signUpButton.disabled = !termsCheckbox.checked;
-    }
-  </script>
+            const response = await fetch('http://localhost:8000/signup', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ fullname, email, password })
+            });
+
+            if (!response.ok) {
+              alert(`${response.status} - ${response.statusText}`);
+              return false;
+            }
+
+            const data = await response.json();
+
+            if (data.error) {
+              alert(data.error);
+              return false;
+            }
+
+            if (data.success) {
+
+              window.location.href = '/login.html';
+
+              return false;
+
+            }
+
+            return false;
+        }
+
+        function toggleSignUpButton(event) {
+            const termsCheckbox = document.getElementById('termsCheckbox');
+            const signUpButton = document.getElementById('signUpButton');
+            signUpButton.disabled = !termsCheckbox.checked;
+        }
+    </script>
 </body>
 
 </html>
