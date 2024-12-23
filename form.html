@@ -282,8 +282,9 @@
           <input type="number" id="resting-bp" name="resting_bp" required>
 
           <div class="button-group">
-            <button type="button" class="save-continue btn-secondary" data-prev="tab1">< PREVIOUS</button>
-            <button type="button" class="save-continue btn-primary" data-next="tab3">NEXT ></button>
+            <button type="button" class="save-continue btn-secondary" data-prev="tab1">
+              < PREVIOUS</button>
+                <button type="button" class="save-continue btn-primary" data-next="tab3">NEXT ></button>
           </div>
         </div>
 
@@ -308,8 +309,9 @@
           </select>
 
           <div class="button-group">
-            <button type="button" class="save-continue btn-secondary" data-prev="tab2">< PREVIOUS</button>
-            <button type="button" class="save-continue btn-primary" data-next="tab4">NEXT ></button>
+            <button type="button" class="save-continue btn-secondary" data-prev="tab2">
+              < PREVIOUS</button>
+                <button type="button" class="save-continue btn-primary" data-next="tab4">NEXT ></button>
           </div>
         </div>
 
@@ -332,8 +334,9 @@
           <input type="number" id="oldpeak" name="oldpeak" min="0" max="10" step="0.1" required>
 
           <div class="button-group">
-            <button type="button" class="save-continue btn-secondary" data-prev="tab3">< PREVIOUS</button>
-            <button type="button" class="save-continue btn-primary" data-next="tab5">NEXT ></button>
+            <button type="button" class="save-continue btn-secondary" data-prev="tab3">
+              < PREVIOUS</button>
+                <button type="button" class="save-continue btn-primary" data-next="tab5">NEXT ></button>
           </div>
         </div>
 
@@ -360,8 +363,9 @@
           </select>
 
           <div class="button-group">
-            <button type="button" class="save-continue btn-secondary" data-prev="tab4">< PREVIOUS</button>
-            <button type="submit" class="save-continue btn-primary" id="submitBtn">SUBMIT</button>
+            <button type="button" class="save-continue btn-secondary" data-prev="tab4">
+              < PREVIOUS</button>
+                <button type="submit" class="save-continue btn-primary" id="submitBtn">SUBMIT</button>
           </div>
 
 
@@ -543,12 +547,21 @@
         popup.style.display = 'flex';
 
         const content = `
-      <div class="popup-content">
-        <h3 style="font-weight: 400;">Your result is </h3>
-        <h3 style="font-weight: 600; font-size: 1.3rem; padding-top: 7px; padding-bottom: 7px;">${result
+      <div class="popup-content" style="width: 1000px; height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+        <div>
+          <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+          <img style="width: 45px; height: 45px; margin-right: 10px;" src="${result ? 'https://prod-cdn.fiekzz.com/1.png' : 'https://prod-cdn.fiekzz.com/2.png'}" />
+          <h3 style="font-weight: 800; font-size: 1.6rem; padding-top: 7px; padding-bottom: 7px;">${result
             ? 'Higher risk of heart disease detected.'
             : 'Low risk of heart disease.'}</h3>
-        <button class="confirm-btn" onclick="this.closest('.popup-modal').remove()">Close</button>
+          </div>
+          <h4 style="font-weight: 500; margin: 0; margin-top: 50px; margin-bottom: 10px;">${result ? 'Your result indicates a high risk of heart disease. It is strongly recommended to adopt a healthier lifestyle immediately, such as improving your diet, exercising regularly, and avoiding smoking or alcohol. Please consult a healthcare professional or cardiologist as soon as possible for a detailed evaluation and tailored medical advice.' : 'Your result suggests a low risk of heart disease. However, maintaining a healthy lifestyle is crucial. Continue eating a balanced diet, staying active, and managing stress. Regular health check-ups are also recommended to monitor your heart health.'}</h4>
+          <div style="border-radius: 20px; border: 1px solid red; background-color: #ffc5b8; padding: 8px;">
+            <h4 style="text-align: start; font-size: 1rem; margin: 0; margin-bottom: 10px;">Disclaimer!</h4>
+            <h5 style="text-align: start; font-weight: 500; font-size: 0.8rem; margin: 0;">This result is only a prediction based on available data and does not replace professional medical advice or diagnosis. Please consult a qualified medical expert for a thorough assessment and personalized recommendations.</h5>
+          </div>
+        </div>
+        <button class="confirm-btn" style="width: 100%; margin: 0; margin-top: 10px" onclick="this.closest('.popup-modal').remove()">Close</button>
       </div>
     `;
 
