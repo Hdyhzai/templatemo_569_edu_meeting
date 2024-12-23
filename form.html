@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Heart Disease Prediction Form</title>
+  <script src="https://kit.fontawesome.com/0fd9fe068c.js" crossorigin="anonymous"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -223,6 +224,8 @@
       color: white;
     }
   </style>
+
+  <script type="module" src="checkauth.js"></script>
 </head>
 
 <body>
@@ -238,11 +241,11 @@
       </div>
       <form id="heart-disease-form">
         <div class="tab-nav">
-          <button type="button" class="tab-btn active" data-tab="tab1">1</button>
-          <button type="button" class="tab-btn" data-tab="tab2">2</button>
-          <button type="button" class="tab-btn" data-tab="tab3">3</button>
-          <button type="button" class="tab-btn" data-tab="tab4">4</button>
-          <button type="button" class="tab-btn" data-tab="tab5">5</button>
+          <button type="button" onclick="navigateTabs('tab1')" class="tab-btn active" data-tab="tab1">1</button>
+          <button type="button" onclick="navigateTabs('tab2')" class="tab-btn" data-tab="tab2">2</button>
+          <button type="button" onclick="navigateTabs('tab3')" class="tab-btn" data-tab="tab3">3</button>
+          <button type="button" onclick="navigateTabs('tab4')" class="tab-btn" data-tab="tab4">4</button>
+          <button type="button" onclick="navigateTabs('tab5')" class="tab-btn" data-tab="tab5">5</button>
         </div>
 
         <div id="tab1" class="tab-pane active">
@@ -258,7 +261,10 @@
           </select>
 
           <div class="button-group">
-            <button type="button" class="save-continue btn-primary" data-next="tab2">NEXT ></button>
+            <button type="button" onclick="window.location.href = '/index.html'" class="save-continue btn-secondary"><i
+                class="fa fa-angle-left" aria-hidden="true"></i> BACK TO HOME</button>
+            <button type="button" class="save-continue btn-primary" data-next="tab2">NEXT <i class="fa fa-angle-right"
+                aria-hidden="true"></i></button>
           </div>
         </div>
 
@@ -283,8 +289,9 @@
 
           <div class="button-group">
             <button type="button" class="save-continue btn-secondary" data-prev="tab1">
-              < PREVIOUS</button>
-                <button type="button" class="save-continue btn-primary" data-next="tab3">NEXT ></button>
+              <i class="fa fa-angle-left" aria-hidden="true"></i> PREVIOUS</button>
+            <button type="button" class="save-continue btn-primary" data-next="tab3">NEXT <i class="fa fa-angle-right"
+                aria-hidden="true"></i></button>
           </div>
         </div>
 
@@ -310,8 +317,9 @@
 
           <div class="button-group">
             <button type="button" class="save-continue btn-secondary" data-prev="tab2">
-              < PREVIOUS</button>
-                <button type="button" class="save-continue btn-primary" data-next="tab4">NEXT ></button>
+              <i class="fa fa-angle-left" aria-hidden="true"></i> PREVIOUS</button>
+            <button type="button" class="save-continue btn-primary" data-next="tab4">NEXT <i class="fa fa-angle-right"
+                aria-hidden="true"></i></button>
           </div>
         </div>
 
@@ -335,8 +343,9 @@
 
           <div class="button-group">
             <button type="button" class="save-continue btn-secondary" data-prev="tab3">
-              < PREVIOUS</button>
-                <button type="button" class="save-continue btn-primary" data-next="tab5">NEXT ></button>
+              <i class="fa fa-angle-left" aria-hidden="true"></i> PREVIOUS</button>
+            <button type="button" class="save-continue btn-primary" data-next="tab5">NEXT <i class="fa fa-angle-right"
+                aria-hidden="true"></i></button>
           </div>
         </div>
 
@@ -364,8 +373,9 @@
 
           <div class="button-group">
             <button type="button" class="save-continue btn-secondary" data-prev="tab4">
-              < PREVIOUS</button>
-                <button type="submit" class="save-continue btn-primary" id="submitBtn">SUBMIT</button>
+              <i class="fa fa-angle-left" aria-hidden="true"></i> PREVIOUS</button>
+            <button type="submit" class="save-continue btn-primary" id="submitBtn">SUBMIT <i class="fa fa-angle-right"
+                aria-hidden="true"></i></button>
           </div>
 
 
@@ -376,7 +386,7 @@
   <footer>
     <p>&copy; 2024 Heart Disease Prediction System. All rights reserved.</p>
   </footer>
-  <script lang="ts">
+  <script lang="ts" type="module">
     // // Get tab buttons and tab panes
     // const tabButtons = document.querySelectorAll('.tab-btn');
     // const tabPanes = document.querySelectorAll('.tab-pane');
@@ -407,6 +417,21 @@
     //     }
     //   });
     // });
+
+    import { getCookie } from './checkauth.js';
+
+    window.navigateTabs = function (navigateTo) {
+      // remove all active class from tab buttons and tab panes. And add active class to the current tab button and tab pane
+      document.querySelectorAll('.tab-btn').forEach(button => {
+        button.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.remove('active');
+      });
+
+      document.querySelector(`[data-tab="${navigateTo}"]`).classList.add('active');
+      document.getElementById(navigateTo).classList.add('active');
+    }
 
     // Updated script to handle form submission with fetch request
     document.addEventListener('DOMContentLoaded', () => {
@@ -446,6 +471,7 @@
 
 
         /* 
+        Example of the data that will be sent to the server:
         {
           "Age": 44,
           "Sex": 1,
@@ -499,10 +525,13 @@
             Thal: formData.thal
           }
 
+          const token = getCookie();
+
           const response = await fetch('http://localhost:8000/predict', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(data)
           })
@@ -513,7 +542,7 @@
 
           const result = await response.json()
 
-          showResultPopup(result.Risk)
+          showResultPopup(result.data.Risk)
 
           // TODO
           // // Replace with your actual API endpoint
@@ -579,7 +608,10 @@
       <div class="popup-content">
         <h3>Error</h3>
         <p>${message}</p>
-        <button class="cancel-btn" onclick="this.closest('.popup-modal').remove()">Close</button>
+        <button class="cancel-btn" onclick="() => {
+          window.location.href = '/index.html';
+          this.closest('.popup-modal').remove();
+          }">Close</button>
       </div>
     `;
 
